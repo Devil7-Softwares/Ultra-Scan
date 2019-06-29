@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Compression.vb" />
+    <Compile Include="Classes\SerializablePage.vb" />
     <Compile Include="Classes\Serializer.vb" />
     <Compile Include="Classes\Utils.vb" />
     <Compile Include="Dialogs\frm_ExportImage.Designer.vb">
