@@ -42,7 +42,7 @@
 #End Region
 
 #Region "Button Events"
-    Private Sub txt_Folder_EditValueChanged(sender As Object, e As EventArgs) Handles txt_Folder.EditValueChanged
+    Private Sub txt_Folder_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles txt_Folder.ButtonClick
         If My.Computer.FileSystem.DirectoryExists(txt_Folder.Text) Then dialog_SelectFolder.SelectedPath = txt_Folder.Text
 
         If dialog_SelectFolder.ShowDialog = DialogResult.OK Then
