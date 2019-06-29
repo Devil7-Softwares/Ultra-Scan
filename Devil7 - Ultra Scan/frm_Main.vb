@@ -1,5 +1,4 @@
-﻿Imports DevExpress.XtraBars
-Imports Dynamsoft.TWAIN
+﻿Imports Dynamsoft.TWAIN
 Imports Dynamsoft.TWAIN.Interface
 
 Public Class frm_Main : Implements IAcquireCallback
@@ -200,7 +199,7 @@ Public Class frm_Main : Implements IAcquireCallback
         End If
     End Sub
 
-    Private Sub btn_SaveData_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn_SaveData.ItemClick
+    Private Sub btn_SaveData_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btn_SaveData.ItemClick
         Try
             If dialog_SaveData.ShowDialog = DialogResult.OK Then
                 Serializer.ToZFile(SerializablePage.ConvertPages(Pages), dialog_SaveData.FileName)
@@ -211,7 +210,7 @@ Public Class frm_Main : Implements IAcquireCallback
         End Try
     End Sub
 
-    Private Sub btn_OpenData_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn_OpenData.ItemClick
+    Private Sub btn_OpenData_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btn_OpenData.ItemClick
         Try
             If dialog_OpenData.ShowDialog = DialogResult.OK Then
                 SerializablePage.ParsePages(Pages, Serializer.FromZFile(Of List(Of SerializablePage))(dialog_OpenData.FileName))
@@ -274,6 +273,26 @@ BuildFilePath:
             My.Settings.StartingNumber = FileIndex
             My.Settings.Save()
         End If
+    End Sub
+
+    Private Sub btn_Export_PDF_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btn_Export_PDF.ItemClick
+        Try
+BuildFilePath:
+            Dim FilePath As String = IO.Path.Combine(My.Settings.DefaultFolder, String.Format(My.Settings.FilenameFormat, My.Settings.StartingNumber) & ".pdf")
+            If My.Computer.FileSystem.FileExists(FilePath) Then
+                My.Settings.StartingNumber += 1
+                My.Settings.Save()
+                GoTo BuildFilePath
+            End If
+
+            PDF.ExportPDF(Pages, FilePath)
+
+            If ShowMessage("PDF Successfully saved to default location! Do you want to open the saved location?", "Done", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
+                Process.Start(My.Settings.DefaultFolder)
+            End If
+        Catch ex As Exception
+            ShowMessage("Unable to export PDF!" & vbNewLine & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End Try
     End Sub
 #End Region
 
