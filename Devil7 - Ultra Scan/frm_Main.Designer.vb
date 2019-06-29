@@ -32,20 +32,26 @@ Partial Class frm_Main
         Me.btn_Export_JPEG = New DevExpress.XtraBars.BarButtonItem()
         Me.btn_Export_PDF = New DevExpress.XtraBars.BarButtonItem()
         Me.btn_Export_PNG = New DevExpress.XtraBars.BarButtonItem()
+        Me.btn_SaveData = New DevExpress.XtraBars.BarButtonItem()
+        Me.btn_OpenData = New DevExpress.XtraBars.BarButtonItem()
+        Me.btn_Rotate_Left = New DevExpress.XtraBars.BarButtonItem()
+        Me.btn_Rotate_Right = New DevExpress.XtraBars.BarButtonItem()
+        Me.btn_Flip_Horizontal = New DevExpress.XtraBars.BarButtonItem()
+        Me.btn_Flip_Vertical = New DevExpress.XtraBars.BarButtonItem()
         Me.rp_Home = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.rpg_Scanner = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.rpg_Pages = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.rpg_Rotation = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.rpg_Export = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.rpg_Workspace = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.gallery_Pages = New DevExpress.XtraBars.Ribbon.GalleryControl()
         Me.GalleryControlClient1 = New DevExpress.XtraBars.Ribbon.GalleryControlClient()
         Me.container_Main = New DevExpress.XtraEditors.SplitContainerControl()
         Me.pic_Preview = New DevExpress.XtraEditors.PictureEdit()
         Me.dialog_SavePDF = New System.Windows.Forms.SaveFileDialog()
-        Me.btn_SaveData = New DevExpress.XtraBars.BarButtonItem()
         Me.dialog_SaveData = New System.Windows.Forms.SaveFileDialog()
         Me.dialog_OpenData = New System.Windows.Forms.OpenFileDialog()
-        Me.btn_OpenData = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmb_Scanner_Edit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gallery_Pages, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -58,13 +64,13 @@ Partial Class frm_Main
         'RibbonControl
         '
         Me.RibbonControl.ExpandCollapseItem.Id = 0
-        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.cmb_Scanner, Me.btn_Scan, Me.sw_ShowUI, Me.btn_RemovePage, Me.btn_Page_MoveUp, Me.btn_Page_MoveDown, Me.btn_Export_BMP, Me.btn_Export_JPEG, Me.btn_Export_PDF, Me.btn_Export_PNG, Me.btn_SaveData, Me.btn_OpenData})
+        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.cmb_Scanner, Me.btn_Scan, Me.sw_ShowUI, Me.btn_RemovePage, Me.btn_Page_MoveUp, Me.btn_Page_MoveDown, Me.btn_Export_BMP, Me.btn_Export_JPEG, Me.btn_Export_PDF, Me.btn_Export_PNG, Me.btn_SaveData, Me.btn_OpenData, Me.btn_Rotate_Left, Me.btn_Rotate_Right, Me.btn_Flip_Horizontal, Me.btn_Flip_Vertical})
         Me.RibbonControl.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl.MaxItemId = 15
+        Me.RibbonControl.MaxItemId = 19
         Me.RibbonControl.Name = "RibbonControl"
         Me.RibbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.rp_Home})
         Me.RibbonControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.cmb_Scanner_Edit})
-        Me.RibbonControl.Size = New System.Drawing.Size(745, 143)
+        Me.RibbonControl.Size = New System.Drawing.Size(956, 143)
         Me.RibbonControl.StatusBar = Me.RibbonStatusBar
         '
         'cmb_Scanner
@@ -150,9 +156,56 @@ Partial Class frm_Main
         Me.btn_Export_PNG.ImageOptions.SvgImage = CType(resources.GetObject("btn_Export_PNG.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.btn_Export_PNG.Name = "btn_Export_PNG"
         '
+        'btn_SaveData
+        '
+        Me.btn_SaveData.Caption = "Save"
+        Me.btn_SaveData.Id = 13
+        Me.btn_SaveData.ImageOptions.SvgImage = CType(resources.GetObject("btn_SaveData.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btn_SaveData.Name = "btn_SaveData"
+        Me.btn_SaveData.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText
+        '
+        'btn_OpenData
+        '
+        Me.btn_OpenData.Caption = "Open"
+        Me.btn_OpenData.Id = 14
+        Me.btn_OpenData.ImageOptions.SvgImage = CType(resources.GetObject("btn_OpenData.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btn_OpenData.Name = "btn_OpenData"
+        Me.btn_OpenData.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText
+        '
+        'btn_Rotate_Left
+        '
+        Me.btn_Rotate_Left.Caption = "Rotate Left"
+        Me.btn_Rotate_Left.Id = 15
+        Me.btn_Rotate_Left.ImageOptions.SvgImage = CType(resources.GetObject("btn_Rotate_Left.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btn_Rotate_Left.Name = "btn_Rotate_Left"
+        Me.btn_Rotate_Left.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
+        '
+        'btn_Rotate_Right
+        '
+        Me.btn_Rotate_Right.Caption = "Rotate Right"
+        Me.btn_Rotate_Right.Id = 16
+        Me.btn_Rotate_Right.ImageOptions.SvgImage = CType(resources.GetObject("btn_Rotate_Right.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btn_Rotate_Right.Name = "btn_Rotate_Right"
+        '
+        'btn_Flip_Horizontal
+        '
+        Me.btn_Flip_Horizontal.Caption = "Horizontal Flip"
+        Me.btn_Flip_Horizontal.Id = 17
+        Me.btn_Flip_Horizontal.ImageOptions.SvgImage = CType(resources.GetObject("BarButtonItem1.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btn_Flip_Horizontal.Name = "btn_Flip_Horizontal"
+        Me.btn_Flip_Horizontal.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
+        '
+        'btn_Flip_Vertical
+        '
+        Me.btn_Flip_Vertical.Caption = "Vertical Flip"
+        Me.btn_Flip_Vertical.Id = 18
+        Me.btn_Flip_Vertical.ImageOptions.SvgImage = CType(resources.GetObject("btn_Flip_Vertical.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btn_Flip_Vertical.Name = "btn_Flip_Vertical"
+        Me.btn_Flip_Vertical.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText
+        '
         'rp_Home
         '
-        Me.rp_Home.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.rpg_Scanner, Me.rpg_Pages, Me.rpg_Export})
+        Me.rp_Home.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.rpg_Scanner, Me.rpg_Pages, Me.rpg_Rotation, Me.rpg_Export, Me.rpg_Workspace})
         Me.rp_Home.Name = "rp_Home"
         Me.rp_Home.Text = "Home"
         '
@@ -170,11 +223,19 @@ Partial Class frm_Main
         Me.rpg_Pages.ItemLinks.Add(Me.btn_Page_MoveUp, True)
         Me.rpg_Pages.ItemLinks.Add(Me.btn_Page_MoveDown)
         Me.rpg_Pages.ItemLinks.Add(Me.btn_RemovePage)
-        Me.rpg_Pages.ItemLinks.Add(Me.btn_SaveData, True)
-        Me.rpg_Pages.ItemLinks.Add(Me.btn_OpenData)
         Me.rpg_Pages.Name = "rpg_Pages"
         Me.rpg_Pages.ShowCaptionButton = False
         Me.rpg_Pages.Text = "Pages"
+        '
+        'rpg_Rotation
+        '
+        Me.rpg_Rotation.ItemLinks.Add(Me.btn_Rotate_Right)
+        Me.rpg_Rotation.ItemLinks.Add(Me.btn_Rotate_Left)
+        Me.rpg_Rotation.ItemLinks.Add(Me.btn_Flip_Horizontal)
+        Me.rpg_Rotation.ItemLinks.Add(Me.btn_Flip_Vertical)
+        Me.rpg_Rotation.Name = "rpg_Rotation"
+        Me.rpg_Rotation.ShowCaptionButton = False
+        Me.rpg_Rotation.Text = "Rotation"
         '
         'rpg_Export
         '
@@ -186,12 +247,20 @@ Partial Class frm_Main
         Me.rpg_Export.ShowCaptionButton = False
         Me.rpg_Export.Text = "Export"
         '
+        'rpg_Workspace
+        '
+        Me.rpg_Workspace.ItemLinks.Add(Me.btn_SaveData)
+        Me.rpg_Workspace.ItemLinks.Add(Me.btn_OpenData)
+        Me.rpg_Workspace.Name = "rpg_Workspace"
+        Me.rpg_Workspace.ShowCaptionButton = False
+        Me.rpg_Workspace.Text = "Workspace"
+        '
         'RibbonStatusBar
         '
         Me.RibbonStatusBar.Location = New System.Drawing.Point(0, 418)
         Me.RibbonStatusBar.Name = "RibbonStatusBar"
         Me.RibbonStatusBar.Ribbon = Me.RibbonControl
-        Me.RibbonStatusBar.Size = New System.Drawing.Size(745, 31)
+        Me.RibbonStatusBar.Size = New System.Drawing.Size(956, 31)
         '
         'gallery_Pages
         '
@@ -206,7 +275,7 @@ Partial Class frm_Main
         Me.gallery_Pages.Gallery.ShowItemText = True
         Me.gallery_Pages.Location = New System.Drawing.Point(0, 0)
         Me.gallery_Pages.Name = "gallery_Pages"
-        Me.gallery_Pages.Size = New System.Drawing.Size(503, 275)
+        Me.gallery_Pages.Size = New System.Drawing.Size(714, 275)
         Me.gallery_Pages.TabIndex = 2
         Me.gallery_Pages.Text = "Pages"
         '
@@ -214,7 +283,7 @@ Partial Class frm_Main
         '
         Me.GalleryControlClient1.GalleryControl = Me.gallery_Pages
         Me.GalleryControlClient1.Location = New System.Drawing.Point(2, 2)
-        Me.GalleryControlClient1.Size = New System.Drawing.Size(482, 271)
+        Me.GalleryControlClient1.Size = New System.Drawing.Size(693, 271)
         '
         'container_Main
         '
@@ -226,7 +295,7 @@ Partial Class frm_Main
         Me.container_Main.Panel1.Text = "Panel1"
         Me.container_Main.Panel2.Controls.Add(Me.pic_Preview)
         Me.container_Main.Panel2.Text = "Panel2"
-        Me.container_Main.Size = New System.Drawing.Size(745, 275)
+        Me.container_Main.Size = New System.Drawing.Size(956, 275)
         Me.container_Main.SplitterPosition = 237
         Me.container_Main.TabIndex = 5
         '
@@ -252,14 +321,6 @@ Partial Class frm_Main
         Me.dialog_SavePDF.Filter = "Portable Document Files (*.pdf)|*.pdf"
         Me.dialog_SavePDF.FilterIndex = 0
         '
-        'btn_SaveData
-        '
-        Me.btn_SaveData.Caption = "Save"
-        Me.btn_SaveData.Id = 13
-        Me.btn_SaveData.ImageOptions.SvgImage = CType(resources.GetObject("btn_SaveData.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.btn_SaveData.Name = "btn_SaveData"
-        Me.btn_SaveData.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText
-        '
         'dialog_SaveData
         '
         Me.dialog_SaveData.DefaultExt = "usdat"
@@ -270,19 +331,11 @@ Partial Class frm_Main
         Me.dialog_OpenData.DefaultExt = "usdat"
         Me.dialog_OpenData.Filter = "Ultra Scan Data Files (*.usdat)|*.usdat"
         '
-        'btn_OpenData
-        '
-        Me.btn_OpenData.Caption = "Open"
-        Me.btn_OpenData.Id = 14
-        Me.btn_OpenData.ImageOptions.SvgImage = CType(resources.GetObject("btn_OpenData.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.btn_OpenData.Name = "btn_OpenData"
-        Me.btn_OpenData.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText
-        '
         'frm_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(745, 449)
+        Me.ClientSize = New System.Drawing.Size(956, 449)
         Me.Controls.Add(Me.container_Main)
         Me.Controls.Add(Me.RibbonStatusBar)
         Me.Controls.Add(Me.RibbonControl)
@@ -328,4 +381,10 @@ Partial Class frm_Main
     Friend WithEvents dialog_SaveData As SaveFileDialog
     Friend WithEvents dialog_OpenData As OpenFileDialog
     Friend WithEvents btn_OpenData As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents rpg_Workspace As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents btn_Rotate_Left As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btn_Rotate_Right As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btn_Flip_Horizontal As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btn_Flip_Vertical As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents rpg_Rotation As DevExpress.XtraBars.Ribbon.RibbonPageGroup
 End Class

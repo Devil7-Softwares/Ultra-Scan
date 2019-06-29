@@ -157,6 +157,7 @@ Public Class frm_Main : Implements IAcquireCallback
 #End Region
 
 #Region "Button Events"
+#Region "Page"
     Private Sub btn_Scan_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btn_Scan.ItemClick
         TWAINManager.SelectSourceByIndex(ScannerIndex)
         TWAINManager.IfShowUI = sw_ShowUI.Checked
@@ -198,7 +199,9 @@ Public Class frm_Main : Implements IAcquireCallback
             End If
         End If
     End Sub
+#End Region
 
+#Region "Workspace"
     Private Sub btn_SaveData_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btn_SaveData.ItemClick
         Try
             If dialog_SaveData.ShowDialog = DialogResult.OK Then
@@ -219,6 +222,41 @@ Public Class frm_Main : Implements IAcquireCallback
             ShowMessage("Unable to open file!" & vbNewLine & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Try
     End Sub
+#End Region
+
+#Region "Rotation"
+    Private Sub btn_Rotate_Right_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btn_Rotate_Right.ItemClick
+        For Each Page As DevExpress.XtraBars.Ribbon.GalleryItem In Pages.GetCheckedItems
+            Page.Image.RotateFlip(RotateFlipType.Rotate90FlipNone)
+            Pages.Visible = False
+            Pages.Visible = True
+        Next
+    End Sub
+
+    Private Sub btn_Rotate_Left_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btn_Rotate_Left.ItemClick
+        For Each Page As DevExpress.XtraBars.Ribbon.GalleryItem In Pages.GetCheckedItems
+            Page.Image.RotateFlip(RotateFlipType.Rotate270FlipNone)
+            Pages.Visible = False
+            Pages.Visible = True
+        Next
+    End Sub
+
+    Private Sub btn_Flip_Horizontal_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btn_Flip_Horizontal.ItemClick
+        For Each Page As DevExpress.XtraBars.Ribbon.GalleryItem In Pages.GetCheckedItems
+            Page.Image.RotateFlip(RotateFlipType.RotateNoneFlipX)
+            Pages.Visible = False
+            Pages.Visible = True
+        Next
+    End Sub
+
+    Private Sub btn_Flip_Vertical_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btn_Flip_Vertical.ItemClick
+        For Each Page As DevExpress.XtraBars.Ribbon.GalleryItem In Pages.GetCheckedItems
+            Page.Image.RotateFlip(RotateFlipType.RotateNoneFlipY)
+            Pages.Visible = False
+            Pages.Visible = True
+        Next
+    End Sub
+#End Region
 #End Region
 
 #Region "Export Events"
