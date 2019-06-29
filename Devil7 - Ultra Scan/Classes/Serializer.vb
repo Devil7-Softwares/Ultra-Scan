@@ -37,6 +37,14 @@ Public Class Serializer
         Return R
     End Function
 
+    Public Shared Function FromZFile(Of T)(ByVal FilePath As String) As T
+        If My.Computer.FileSystem.FileExists(FilePath) Then
+            Return FromZXML(Of T)(My.Computer.FileSystem.ReadAllBytes(FilePath))
+        Else
+            Return Nothing
+        End If
+    End Function
+
     Public Shared Function FromFile(Of T)(ByVal FilePath As String) As T
         Dim R As T = Nothing
         If My.Computer.FileSystem.FileExists(FilePath) Then
@@ -51,6 +59,10 @@ Public Class Serializer
         End If
         Return R
     End Function
+
+    Public Shared Sub ToZFile(Of T)(ByVal Obj As T, ByVal FilePath As String)
+        My.Computer.FileSystem.WriteAllBytes(FilePath, ToZXML(Of T)(Obj), False)
+    End Sub
 
     Public Shared Sub ToFile(Of T)(ByVal Obj As T, ByVal FilePath As String)
         If Obj IsNot Nothing Then
