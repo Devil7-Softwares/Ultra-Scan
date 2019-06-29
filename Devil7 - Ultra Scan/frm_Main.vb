@@ -199,6 +199,27 @@ Public Class frm_Main : Implements IAcquireCallback
             End If
         End If
     End Sub
+
+    Private Sub btn_SaveData_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn_SaveData.ItemClick
+        Try
+            If dialog_SaveData.ShowDialog = DialogResult.OK Then
+                Serializer.ToZFile(SerializablePage.ConvertPages(Pages), dialog_SaveData.FileName)
+                ShowMessage("Current workspace successfully saved to file!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Catch ex As Exception
+            ShowMessage("Unable to save workspace to file!" & vbNewLine & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End Try
+    End Sub
+
+    Private Sub btn_OpenData_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn_OpenData.ItemClick
+        Try
+            If dialog_OpenData.ShowDialog = DialogResult.OK Then
+                SerializablePage.ParsePages(Pages, Serializer.FromZFile(Of List(Of SerializablePage))(dialog_OpenData.FileName))
+            End If
+        Catch ex As Exception
+            ShowMessage("Unable to open file!" & vbNewLine & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End Try
+    End Sub
 #End Region
 
 #Region "Export Events"

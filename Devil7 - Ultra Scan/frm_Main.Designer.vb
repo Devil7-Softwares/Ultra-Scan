@@ -42,6 +42,10 @@ Partial Class frm_Main
         Me.container_Main = New DevExpress.XtraEditors.SplitContainerControl()
         Me.pic_Preview = New DevExpress.XtraEditors.PictureEdit()
         Me.dialog_SavePDF = New System.Windows.Forms.SaveFileDialog()
+        Me.btn_SaveData = New DevExpress.XtraBars.BarButtonItem()
+        Me.dialog_SaveData = New System.Windows.Forms.SaveFileDialog()
+        Me.dialog_OpenData = New System.Windows.Forms.OpenFileDialog()
+        Me.btn_OpenData = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmb_Scanner_Edit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gallery_Pages, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -54,9 +58,9 @@ Partial Class frm_Main
         'RibbonControl
         '
         Me.RibbonControl.ExpandCollapseItem.Id = 0
-        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.cmb_Scanner, Me.btn_Scan, Me.sw_ShowUI, Me.btn_RemovePage, Me.btn_Page_MoveUp, Me.btn_Page_MoveDown, Me.btn_Export_BMP, Me.btn_Export_JPEG, Me.btn_Export_PDF, Me.btn_Export_PNG})
+        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.cmb_Scanner, Me.btn_Scan, Me.sw_ShowUI, Me.btn_RemovePage, Me.btn_Page_MoveUp, Me.btn_Page_MoveDown, Me.btn_Export_BMP, Me.btn_Export_JPEG, Me.btn_Export_PDF, Me.btn_Export_PNG, Me.btn_SaveData, Me.btn_OpenData})
         Me.RibbonControl.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl.MaxItemId = 13
+        Me.RibbonControl.MaxItemId = 15
         Me.RibbonControl.Name = "RibbonControl"
         Me.RibbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.rp_Home})
         Me.RibbonControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.cmb_Scanner_Edit})
@@ -166,6 +170,8 @@ Partial Class frm_Main
         Me.rpg_Pages.ItemLinks.Add(Me.btn_Page_MoveUp, True)
         Me.rpg_Pages.ItemLinks.Add(Me.btn_Page_MoveDown)
         Me.rpg_Pages.ItemLinks.Add(Me.btn_RemovePage)
+        Me.rpg_Pages.ItemLinks.Add(Me.btn_SaveData, True)
+        Me.rpg_Pages.ItemLinks.Add(Me.btn_OpenData)
         Me.rpg_Pages.Name = "rpg_Pages"
         Me.rpg_Pages.ShowCaptionButton = False
         Me.rpg_Pages.Text = "Pages"
@@ -246,6 +252,32 @@ Partial Class frm_Main
         Me.dialog_SavePDF.Filter = "Portable Document Files (*.pdf)|*.pdf"
         Me.dialog_SavePDF.FilterIndex = 0
         '
+        'btn_SaveData
+        '
+        Me.btn_SaveData.Caption = "Save"
+        Me.btn_SaveData.Id = 13
+        Me.btn_SaveData.ImageOptions.SvgImage = CType(resources.GetObject("btn_SaveData.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btn_SaveData.Name = "btn_SaveData"
+        Me.btn_SaveData.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText
+        '
+        'dialog_SaveData
+        '
+        Me.dialog_SaveData.DefaultExt = "usdat"
+        Me.dialog_SaveData.Filter = "Ultra Scan Data Files (*.usdat)|*.usdat"
+        '
+        'dialog_OpenData
+        '
+        Me.dialog_OpenData.DefaultExt = "usdat"
+        Me.dialog_OpenData.Filter = "Ultra Scan Data Files (*.usdat)|*.usdat"
+        '
+        'btn_OpenData
+        '
+        Me.btn_OpenData.Caption = "Open"
+        Me.btn_OpenData.Id = 14
+        Me.btn_OpenData.ImageOptions.SvgImage = CType(resources.GetObject("btn_OpenData.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btn_OpenData.Name = "btn_OpenData"
+        Me.btn_OpenData.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText
+        '
         'frm_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -292,4 +324,8 @@ Partial Class frm_Main
     Friend WithEvents btn_Export_PNG As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents rpg_Export As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents dialog_SavePDF As SaveFileDialog
+    Friend WithEvents btn_SaveData As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents dialog_SaveData As SaveFileDialog
+    Friend WithEvents dialog_OpenData As OpenFileDialog
+    Friend WithEvents btn_OpenData As DevExpress.XtraBars.BarButtonItem
 End Class
