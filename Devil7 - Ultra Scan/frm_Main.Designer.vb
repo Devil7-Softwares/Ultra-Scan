@@ -52,6 +52,7 @@ Partial Class frm_Main
         Me.dialog_SavePDF = New System.Windows.Forms.SaveFileDialog()
         Me.dialog_SaveData = New System.Windows.Forms.SaveFileDialog()
         Me.dialog_OpenData = New System.Windows.Forms.OpenFileDialog()
+        Me.btn_Duplicate = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmb_Scanner_Edit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gallery_Pages, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -64,9 +65,9 @@ Partial Class frm_Main
         'RibbonControl
         '
         Me.RibbonControl.ExpandCollapseItem.Id = 0
-        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.cmb_Scanner, Me.btn_Scan, Me.sw_ShowUI, Me.btn_RemovePage, Me.btn_Page_MoveUp, Me.btn_Page_MoveDown, Me.btn_Export_BMP, Me.btn_Export_JPEG, Me.btn_Export_PDF, Me.btn_Export_PNG, Me.btn_SaveData, Me.btn_OpenData, Me.btn_Rotate_Left, Me.btn_Rotate_Right, Me.btn_Flip_Horizontal, Me.btn_Flip_Vertical})
+        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.cmb_Scanner, Me.btn_Scan, Me.sw_ShowUI, Me.btn_RemovePage, Me.btn_Page_MoveUp, Me.btn_Page_MoveDown, Me.btn_Export_BMP, Me.btn_Export_JPEG, Me.btn_Export_PDF, Me.btn_Export_PNG, Me.btn_SaveData, Me.btn_OpenData, Me.btn_Rotate_Left, Me.btn_Rotate_Right, Me.btn_Flip_Horizontal, Me.btn_Flip_Vertical, Me.btn_Duplicate})
         Me.RibbonControl.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl.MaxItemId = 19
+        Me.RibbonControl.MaxItemId = 20
         Me.RibbonControl.Name = "RibbonControl"
         Me.RibbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.rp_Home})
         Me.RibbonControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.cmb_Scanner_Edit})
@@ -108,7 +109,6 @@ Partial Class frm_Main
         Me.btn_RemovePage.Id = 6
         Me.btn_RemovePage.ImageOptions.SvgImage = CType(resources.GetObject("btn_RemovePage.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.btn_RemovePage.Name = "btn_RemovePage"
-        Me.btn_RemovePage.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText
         '
         'btn_Page_MoveUp
         '
@@ -220,9 +220,10 @@ Partial Class frm_Main
         'rpg_Pages
         '
         Me.rpg_Pages.ItemLinks.Add(Me.btn_Scan)
-        Me.rpg_Pages.ItemLinks.Add(Me.btn_Page_MoveUp, True)
+        Me.rpg_Pages.ItemLinks.Add(Me.btn_RemovePage, True)
+        Me.rpg_Pages.ItemLinks.Add(Me.btn_Page_MoveUp)
         Me.rpg_Pages.ItemLinks.Add(Me.btn_Page_MoveDown)
-        Me.rpg_Pages.ItemLinks.Add(Me.btn_RemovePage)
+        Me.rpg_Pages.ItemLinks.Add(Me.btn_Duplicate)
         Me.rpg_Pages.Name = "rpg_Pages"
         Me.rpg_Pages.ShowCaptionButton = False
         Me.rpg_Pages.Text = "Pages"
@@ -331,6 +332,14 @@ Partial Class frm_Main
         Me.dialog_OpenData.DefaultExt = "usdat"
         Me.dialog_OpenData.Filter = "Ultra Scan Data Files (*.usdat)|*.usdat"
         '
+        'btn_Duplicate
+        '
+        Me.btn_Duplicate.Caption = "Duplicate Page"
+        Me.btn_Duplicate.Id = 19
+        Me.btn_Duplicate.ImageOptions.SvgImage = CType(resources.GetObject("btn_Duplicate.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btn_Duplicate.Name = "btn_Duplicate"
+        Me.btn_Duplicate.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText
+        '
         'frm_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -387,4 +396,5 @@ Partial Class frm_Main
     Friend WithEvents btn_Flip_Horizontal As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btn_Flip_Vertical As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents rpg_Rotation As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents btn_Duplicate As DevExpress.XtraBars.BarButtonItem
 End Class

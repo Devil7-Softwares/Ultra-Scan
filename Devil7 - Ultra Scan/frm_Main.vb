@@ -346,6 +346,25 @@ BuildFilePath:
     Private Sub container_Main_SizeChanged(sender As Object, e As EventArgs) Handles container_Main.SizeChanged
         RetainFit()
     End Sub
+
+    Private Sub btn_Duplicate_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btn_Duplicate.ItemClick
+        For Each Page As DevExpress.XtraBars.Ribbon.GalleryItem In Pages.GetCheckedItems
+            Dim Index As Integer = Pages.Items.IndexOf(Page) + 1
+            Dim DuplicateCount As Integer = 1
+BuildCaption:
+            Dim OldCaption As String = If(Page.Caption.Contains("-"), Page.Caption.Split("-")(0).Trim, Page.Caption)
+            Dim NewCaption As String = String.Format("{0} - {1}", OldCaption, DuplicateCount)
+
+            Dim ExistingItem As DevExpress.XtraBars.Ribbon.GalleryItem = Pages.Items.ToList.Find(Function(c) c.Caption = NewCaption)
+            If ExistingItem IsNot Nothing Then
+                Index = Pages.Items.IndexOf(ExistingItem) + 1
+                DuplicateCount += 1
+                GoTo BuildCaption
+            End If
+
+            Pages.Items.Insert(Index, New DevExpress.XtraBars.Ribbon.GalleryItem(New Bitmap(Page.Image), NewCaption, Page.Description))
+        Next
+    End Sub
 #End Region
 
 End Class
