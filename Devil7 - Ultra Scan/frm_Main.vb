@@ -1,4 +1,5 @@
-﻿Imports Dynamsoft.TWAIN
+﻿Imports DevExpress.XtraBars
+Imports Dynamsoft.TWAIN
 Imports Dynamsoft.TWAIN.Interface
 
 Public Class frm_Main : Implements IAcquireCallback
@@ -196,6 +197,61 @@ Public Class frm_Main : Implements IAcquireCallback
                     Pages.Items.Remove(i)
                 Next
             End If
+        End If
+    End Sub
+#End Region
+
+#Region "Export Events"
+    Private Sub btn_Export_BMP_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btn_Export_BMP.ItemClick
+        Dim D As New frm_ExportImage
+        If D.ShowDialog = DialogResult.OK Then
+            Dim FileIndex As Integer = D.StartingNumber
+            For Each Item As DevExpress.XtraBars.Ribbon.GalleryItem In Pages.Items
+BuildFilePath:
+                Dim FilePath As String = IO.Path.Combine(D.BaseFolder, String.Format(D.FilenameFormat, FileIndex) & ".bmp")
+                If Not D.Overwrite AndAlso My.Computer.FileSystem.FileExists(FilePath) Then
+                    FileIndex += 1
+                    GoTo BuildFilePath
+                End If
+                Item.Image.Save(FilePath, Imaging.ImageFormat.Bmp)
+                FileIndex += 1
+            Next
+        End If
+    End Sub
+
+    Private Sub btn_Export_JPEG_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btn_Export_JPEG.ItemClick
+        Dim D As New frm_ExportImage
+        If D.ShowDialog = DialogResult.OK Then
+            Dim FileIndex As Integer = D.StartingNumber
+            For Each Item As DevExpress.XtraBars.Ribbon.GalleryItem In Pages.Items
+BuildFilePath:
+                Dim FilePath As String = IO.Path.Combine(D.BaseFolder, String.Format(D.FilenameFormat, FileIndex) & ".jpg")
+                If Not D.Overwrite AndAlso My.Computer.FileSystem.FileExists(FilePath) Then
+                    FileIndex += 1
+                    GoTo BuildFilePath
+                End If
+                Item.Image.Save(FilePath, Imaging.ImageFormat.Jpeg)
+                FileIndex += 1
+            Next
+        End If
+    End Sub
+
+    Private Sub btn_Export_PNG_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btn_Export_PNG.ItemClick
+        Dim D As New frm_ExportImage
+        If D.ShowDialog = DialogResult.OK Then
+            Dim FileIndex As Integer = D.StartingNumber
+            For Each Item As DevExpress.XtraBars.Ribbon.GalleryItem In Pages.Items
+BuildFilePath:
+                Dim FilePath As String = IO.Path.Combine(D.BaseFolder, String.Format(D.FilenameFormat, FileIndex) & ".png")
+                If Not D.Overwrite AndAlso My.Computer.FileSystem.FileExists(FilePath) Then
+                    FileIndex += 1
+                    GoTo BuildFilePath
+                End If
+                Item.Image.Save(FilePath, Imaging.ImageFormat.Png)
+                FileIndex += 1
+            Next
+            My.Settings.StartingNumber = FileIndex
+            My.Settings.Save()
         End If
     End Sub
 #End Region

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frm_Main
     Inherits DevExpress.XtraBars.Ribbon.RibbonForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,7 +17,7 @@ Partial Class frm_Main
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_Main))
         Me.RibbonControl = New DevExpress.XtraBars.Ribbon.RibbonControl()
@@ -28,14 +28,20 @@ Partial Class frm_Main
         Me.btn_RemovePage = New DevExpress.XtraBars.BarButtonItem()
         Me.btn_Page_MoveUp = New DevExpress.XtraBars.BarButtonItem()
         Me.btn_Page_MoveDown = New DevExpress.XtraBars.BarButtonItem()
+        Me.btn_Export_BMP = New DevExpress.XtraBars.BarButtonItem()
+        Me.btn_Export_JPEG = New DevExpress.XtraBars.BarButtonItem()
+        Me.btn_Export_PDF = New DevExpress.XtraBars.BarButtonItem()
+        Me.btn_Export_PNG = New DevExpress.XtraBars.BarButtonItem()
         Me.rp_Home = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.rpg_Scanner = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.rpg_Pages = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.rpg_Export = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.gallery_Pages = New DevExpress.XtraBars.Ribbon.GalleryControl()
         Me.GalleryControlClient1 = New DevExpress.XtraBars.Ribbon.GalleryControlClient()
         Me.container_Main = New DevExpress.XtraEditors.SplitContainerControl()
         Me.pic_Preview = New DevExpress.XtraEditors.PictureEdit()
+        Me.dialog_SavePDF = New System.Windows.Forms.SaveFileDialog()
         CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmb_Scanner_Edit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gallery_Pages, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -48,9 +54,9 @@ Partial Class frm_Main
         'RibbonControl
         '
         Me.RibbonControl.ExpandCollapseItem.Id = 0
-        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.cmb_Scanner, Me.btn_Scan, Me.sw_ShowUI, Me.btn_RemovePage, Me.btn_Page_MoveUp, Me.btn_Page_MoveDown})
+        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.cmb_Scanner, Me.btn_Scan, Me.sw_ShowUI, Me.btn_RemovePage, Me.btn_Page_MoveUp, Me.btn_Page_MoveDown, Me.btn_Export_BMP, Me.btn_Export_JPEG, Me.btn_Export_PDF, Me.btn_Export_PNG})
         Me.RibbonControl.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl.MaxItemId = 9
+        Me.RibbonControl.MaxItemId = 13
         Me.RibbonControl.Name = "RibbonControl"
         Me.RibbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.rp_Home})
         Me.RibbonControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.cmb_Scanner_Edit})
@@ -112,9 +118,37 @@ Partial Class frm_Main
         Me.btn_Page_MoveDown.Name = "btn_Page_MoveDown"
         Me.btn_Page_MoveDown.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText
         '
+        'btn_Export_BMP
+        '
+        Me.btn_Export_BMP.Caption = "Bitmap"
+        Me.btn_Export_BMP.Id = 9
+        Me.btn_Export_BMP.ImageOptions.SvgImage = CType(resources.GetObject("btn_Export_BMP.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btn_Export_BMP.Name = "btn_Export_BMP"
+        '
+        'btn_Export_JPEG
+        '
+        Me.btn_Export_JPEG.Caption = "Jpeg"
+        Me.btn_Export_JPEG.Id = 10
+        Me.btn_Export_JPEG.ImageOptions.SvgImage = CType(resources.GetObject("btn_Export_JPEG.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btn_Export_JPEG.Name = "btn_Export_JPEG"
+        '
+        'btn_Export_PDF
+        '
+        Me.btn_Export_PDF.Caption = "PDF"
+        Me.btn_Export_PDF.Id = 11
+        Me.btn_Export_PDF.ImageOptions.SvgImage = CType(resources.GetObject("btn_Export_PDF.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btn_Export_PDF.Name = "btn_Export_PDF"
+        '
+        'btn_Export_PNG
+        '
+        Me.btn_Export_PNG.Caption = "PNG"
+        Me.btn_Export_PNG.Id = 12
+        Me.btn_Export_PNG.ImageOptions.SvgImage = CType(resources.GetObject("btn_Export_PNG.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btn_Export_PNG.Name = "btn_Export_PNG"
+        '
         'rp_Home
         '
-        Me.rp_Home.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.rpg_Scanner, Me.rpg_Pages})
+        Me.rp_Home.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.rpg_Scanner, Me.rpg_Pages, Me.rpg_Export})
         Me.rp_Home.Name = "rp_Home"
         Me.rp_Home.Text = "Home"
         '
@@ -135,6 +169,16 @@ Partial Class frm_Main
         Me.rpg_Pages.Name = "rpg_Pages"
         Me.rpg_Pages.ShowCaptionButton = False
         Me.rpg_Pages.Text = "Pages"
+        '
+        'rpg_Export
+        '
+        Me.rpg_Export.ItemLinks.Add(Me.btn_Export_BMP)
+        Me.rpg_Export.ItemLinks.Add(Me.btn_Export_JPEG)
+        Me.rpg_Export.ItemLinks.Add(Me.btn_Export_PNG)
+        Me.rpg_Export.ItemLinks.Add(Me.btn_Export_PDF)
+        Me.rpg_Export.Name = "rpg_Export"
+        Me.rpg_Export.ShowCaptionButton = False
+        Me.rpg_Export.Text = "Export"
         '
         'RibbonStatusBar
         '
@@ -196,6 +240,12 @@ Partial Class frm_Main
         Me.pic_Preview.Size = New System.Drawing.Size(237, 275)
         Me.pic_Preview.TabIndex = 0
         '
+        'dialog_SavePDF
+        '
+        Me.dialog_SavePDF.DefaultExt = "pdf"
+        Me.dialog_SavePDF.Filter = "Portable Document Files (*.pdf)|*.pdf"
+        Me.dialog_SavePDF.FilterIndex = 0
+        '
         'frm_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -236,4 +286,10 @@ Partial Class frm_Main
     Friend WithEvents btn_RemovePage As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btn_Page_MoveUp As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btn_Page_MoveDown As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btn_Export_BMP As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btn_Export_JPEG As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btn_Export_PDF As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btn_Export_PNG As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents rpg_Export As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents dialog_SavePDF As SaveFileDialog
 End Class
